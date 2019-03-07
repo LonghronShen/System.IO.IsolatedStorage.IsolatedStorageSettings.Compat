@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net20;net35;net40;net45;netstandard20</TargetFrameworks>
+    <RuntimeIdentifiers>win-x86</RuntimeIdentifiers>
+    <VersionPrefix>1.0.0$(CommitHash)</VersionPrefix>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Description>Compat package for System.IO.IsolatedStorageSettings</Description>
+    <PackageTags>System;IO;IsolatedStorageSettings;Compat</PackageTags>
+    <PackageId>System.IO.IsolatedStorageSettings.Compat</PackageId>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard20' ">
+    <PackageReference Include="System.IO.IsolatedStorage" Version="4.3.0" />
+    <PackageReference Include="System.Threading.Thread" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' != 'netstandard20' ">
+    <Reference Include="System.Configuration" />
+    <Reference Include="System" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' != 'net20' AND '$(TargetFramework)' != 'netstandard20' ">
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+  </ItemGroup>
+
+</Project>
