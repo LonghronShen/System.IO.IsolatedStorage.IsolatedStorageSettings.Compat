@@ -26,9 +26,80 @@ namespace System.IO.IsolatedStorage
         private IsolatedStorageFile container;
         private Dictionary<string, object> settings;
 
-        // SL2 use a "well known" name and it's readable (and delete-able) directly by isolated storage
+        /// <summary>
+        /// SL2 use a "well known" name and it's readable (and delete-able) directly by isolated storage
+        /// </summary>
         private const string LocalSettings = "__LocalSettings";
 
+        #region Static Properties
+        /// <summary>
+        /// Per application, per-computer, per-user
+        /// </summary>
+        public static IsolatedStorageSettings ApplicationSettings
+        {
+            get
+            {
+                if (application_settings == null)
+                {
+                    application_settings = new IsolatedStorageSettings(
+                      HasActivationContext() ?
+                        IsolatedStorageFile.GetUserStoreForApplication() : //for WPF, apps deployed via ClickOnce will have a non-null ActivationContext
+                        IsolatedStorageFile.GetUserStoreForAssembly());
+                }
+                return application_settings;
+            }
+        }
+
+        /// <summary>
+        /// Per domain, per-computer, per-user
+        /// </summary>
+        public static IsolatedStorageSettings SiteSettings
+        {
+            get
+            {
+                if (site_settings == null)
+                {
+                    site_settings = new IsolatedStorageSettings(
+                      HasActivationContext() ?
+                        IsolatedStorageFile.GetUserStoreForApplication() : //for WPF, apps deployed via ClickOnce will have a non-null ActivationContext
+                        IsolatedStorageFile.GetUserStoreForAssembly());
+                    //IsolatedStorageFile.GetUserStoreForSite() works only for Silverlight applications
+                }
+                return site_settings;
+            }
+        }
+        #endregion
+
+        #region Properties
+        public int Count
+        {
+            get { return settings.Count; }
+        }
+
+        public ICollection Keys
+        {
+            get { return settings.Keys; }
+        }
+
+        public ICollection Values
+        {
+            get { return settings.Values; }
+        }
+
+        public object this[string key]
+        {
+            get
+            {
+                return settings[key];
+            }
+            set
+            {
+                settings[key] = value;
+            }
+        }
+        #endregion
+
+        #region Constructors
         internal IsolatedStorageSettings(IsolatedStorageFile isf)
         {
             container = isf;
@@ -79,73 +150,9 @@ namespace System.IO.IsolatedStorage
             // settings are automatically saved if the application close normally
             Save();
         }
+        #endregion
 
-        // static properties
-
-        // per application, per-computer, per-user
-        public static IsolatedStorageSettings ApplicationSettings
-        {
-            get
-            {
-                if (application_settings == null)
-                {
-                    application_settings = new IsolatedStorageSettings(
-                      HasActivationContext() ?
-                        IsolatedStorageFile.GetUserStoreForApplication() : //for WPF, apps deployed via ClickOnce will have a non-null ActivationContext
-                        IsolatedStorageFile.GetUserStoreForAssembly());
-                }
-                return application_settings;
-            }
-        }
-
-        // per domain, per-computer, per-user
-        public static IsolatedStorageSettings SiteSettings
-        {
-            get
-            {
-                if (site_settings == null)
-                {
-                    site_settings = new IsolatedStorageSettings(
-                      HasActivationContext() ?
-                        IsolatedStorageFile.GetUserStoreForApplication() : //for WPF, apps deployed via ClickOnce will have a non-null ActivationContext
-                        IsolatedStorageFile.GetUserStoreForAssembly());
-                    //IsolatedStorageFile.GetUserStoreForSite() works only for Silverlight applications
-                }
-                return site_settings;
-            }
-        }
-
-        // properties
-
-        public int Count
-        {
-            get { return settings.Count; }
-        }
-
-        public ICollection Keys
-        {
-            get { return settings.Keys; }
-        }
-
-        public ICollection Values
-        {
-            get { return settings.Values; }
-        }
-
-        public object this[string key]
-        {
-            get
-            {
-                return settings[key];
-            }
-            set
-            {
-                settings[key] = value;
-            }
-        }
-
-        // methods
-
+        #region Methods
         public void Add(string key, object value)
         {
             settings.Add(key, value);
@@ -249,9 +256,10 @@ namespace System.IO.IsolatedStorage
             return false;
 #endif
         }
+        #endregion
 
-        // explicit interface implementations
-
+        #region Explicit interface implementations
+        #region ICollection<KeyValuePair<string, object>>
         int ICollection<KeyValuePair<string, object>>.Count
         {
             get { return settings.Count; }
@@ -286,8 +294,9 @@ namespace System.IO.IsolatedStorage
         {
             return settings.Remove(item.Key);
         }
+        #endregion
 
-
+        #region IDictionary<string, object>
         ICollection<string> IDictionary<string, object>.Keys
         {
             get { return settings.Keys; }
@@ -307,15 +316,9 @@ namespace System.IO.IsolatedStorage
         {
             return settings.TryGetValue(key, out value);
         }
+        #endregion
 
-
-        private string ExtractKey(object key)
-        {
-            if (key == null)
-                throw new ArgumentNullException("key");
-            return (key as string);
-        }
-
+        #region IDictionary
         void IDictionary.Add(object key, object value)
         {
             string s = ExtractKey(key);
@@ -370,8 +373,9 @@ namespace System.IO.IsolatedStorage
             if (s != null)
                 settings.Remove(s);
         }
+        #endregion
 
-
+        #region ICollection
         void ICollection.CopyTo(Array array, int index)
         {
             (settings as ICollection).CopyTo(array, index);
@@ -386,13 +390,16 @@ namespace System.IO.IsolatedStorage
         {
             get { return (settings as ICollection).SyncRoot; }
         }
+        #endregion
 
-
+        #region IEnumerable<KeyValuePair<string, object>>
         IEnumerator<KeyValuePair<string, object>> IEnumerable<KeyValuePair<string, object>>.GetEnumerator()
         {
             return settings.GetEnumerator();
         }
+        #endregion
 
+        #region IEnumerable
         IEnumerator IEnumerable.GetEnumerator()
         {
             return settings.GetEnumerator();
@@ -402,15 +409,29 @@ namespace System.IO.IsolatedStorage
         {
             return settings.GetEnumerator();
         }
+        #endregion
+        #endregion
+
+        #region Utils
+        private string ExtractKey(object key)
+        {
+            if (key == null)
+                throw new ArgumentNullException("key");
+            return (key as string);
+        }
 
         private static bool HasActivationContext()
         {
-            // Thread.GetDomain().ActivationContext
+#if NETSTANDARD2_0
             var domain = Thread.GetDomain();
             var pi = domain.GetType().GetProperty("ActivationContext");
             var value = SystemUtils.Try(() => pi?.GetValue(domain, null), null);
             return value != null;
+#else
+            return Thread.GetDomain().ActivationContext != null;
+#endif
         }
+        #endregion
 
     }
 
