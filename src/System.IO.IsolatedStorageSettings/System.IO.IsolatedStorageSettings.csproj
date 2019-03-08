@@ -5,11 +5,29 @@
     <RuntimeIdentifiers>win-x86</RuntimeIdentifiers>
     <VersionPrefix>1.0.0$(CommitHash)</VersionPrefix>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Description>Compat package for System.IO.IsolatedStorageSettings</Description>
+    <Description>Compat package for System.IO.IsolatedStorageSettings.
+
+Compat package for the System.IO.IsolatedStorageSettings.
+
+Supporting:
+* .NET Framework 2.0
+* .NET Framework 3.5
+* .NET Framework 4.0
+* .NET Framework 4.5
+* .NET Standard 2.0
+</Description>
     <PackageTags>System;IO;IsolatedStorageSettings;Compat</PackageTags>
-    <PackageId>System.IO.IsolatedStorageSettings.Compat</PackageId>
+    <PackageId>Compat.System.IO.IsolatedStorageSettings</PackageId>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>LonghronShen</Authors>
+    <PackageProjectUrl>https://github.com/LonghronShen/System.IO.IsolatedStorageSettings.Compat</PackageProjectUrl>
+    <Product>Compat.System.IO.IsolatedStorageSettings</Product>
+    <Copyright>Copyright ©2019 Synyi.com</Copyright>
+    <PackageLicenseExpression>https://opensource.org/licenses/MIT</PackageLicenseExpression>
+    <PackageIconUrl>http://go.microsoft.com/fwlink/?LinkID=288859</PackageIconUrl>
+    <RepositoryUrl>https://github.com/LonghronShen/System.IO.IsolatedStorageSettings.Compat</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard20' ">
