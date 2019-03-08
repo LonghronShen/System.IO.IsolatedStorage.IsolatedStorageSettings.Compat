@@ -24,7 +24,7 @@ Supporting:
     <PackageProjectUrl>https://github.com/LonghronShen/System.IO.IsolatedStorageSettings.Compat</PackageProjectUrl>
     <Product>Compat.System.IO.IsolatedStorageSettings</Product>
     <Copyright>Copyright ©2019 Synyi.com</Copyright>
-    <PackageLicenseExpression>https://opensource.org/licenses/MIT</PackageLicenseExpression>
+    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
     <PackageIconUrl>http://go.microsoft.com/fwlink/?LinkID=288859</PackageIconUrl>
     <RepositoryUrl>https://github.com/LonghronShen/System.IO.IsolatedStorageSettings.Compat</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
