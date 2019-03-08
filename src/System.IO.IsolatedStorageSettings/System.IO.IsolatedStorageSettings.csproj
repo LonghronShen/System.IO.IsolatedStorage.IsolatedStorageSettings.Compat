@@ -5,9 +5,7 @@
     <RuntimeIdentifiers>win-x86</RuntimeIdentifiers>
     <VersionPrefix>1.0.1$(CommitHash)</VersionPrefix>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Description>Compat package for System.IO.IsolatedStorageSettings.
-
-Compat package for the System.IO.IsolatedStorageSettings.
+    <Description>Compat package for the System.IO.IsolatedStorageSettings.
 
 Supporting:
 * .NET Framework 2.0
