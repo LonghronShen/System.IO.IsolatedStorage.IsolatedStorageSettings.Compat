@@ -22,6 +22,9 @@ build_script:
 - appveyor-retry msbuild System.IO.IsolatedStorage.IsolatedStorageSettings.sln /t:restore
 - msbuild System.IO.IsolatedStorage.IsolatedStorageSettings.sln /p:Configuration=%CONFIGURATION% /p:VersionSuffix=%LABEL%
 
+test_script:
+- dotnet test test\System.IO.IsolatedStorage.IsolatedStorageSettings.Tests\
+
 artifacts:
 - path: '**\*.nupkg'
 
