@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>net20;net35;net40;net45;netstandard20</TargetFrameworks>
     <RuntimeIdentifiers>win-x86</RuntimeIdentifiers>
-    <VersionPrefix>1.0.3$(CommitHash)</VersionPrefix>
+    <VersionPrefix>1.0.4$(CommitHash)</VersionPrefix>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Description>
       Compat package for the System.IO.IsolatedStorage.IsolatedStorageSettings.
