@@ -15,7 +15,7 @@ namespace System.Collections.Generic
     /// <typeparam name="TKey"></typeparam>
     /// <typeparam name="TValue"></typeparam>
     [XmlRoot("dictionary")]
-    public class SerializableDictionary<TKey, TValue>
+    internal class SerializableDictionary<TKey, TValue>
         : Dictionary<TKey, TValue>, IXmlSerializable
     {
 
@@ -120,6 +120,7 @@ namespace System.Collections.Generic
             }
         }
         #endregion
+
     }
 
 }
