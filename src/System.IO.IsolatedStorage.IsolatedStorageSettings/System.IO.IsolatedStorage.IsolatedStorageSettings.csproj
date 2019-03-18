@@ -5,25 +5,26 @@
     <RuntimeIdentifiers>win-x86</RuntimeIdentifiers>
     <VersionPrefix>1.0.3$(CommitHash)</VersionPrefix>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Description>Compat package for the System.IO.IsolatedStorageSettings.
+    <Description>
+      Compat package for the System.IO.IsolatedStorage.IsolatedStorageSettings.
 
-Supporting:
-* .NET Framework 2.0
-* .NET Framework 3.5
-* .NET Framework 4.0
-* .NET Framework 4.5
-* .NET Standard 2.0
-</Description>
-    <PackageTags>System;IO;IsolatedStorageSettings;Compat</PackageTags>
-    <PackageId>Compat.System.IO.IsolatedStorageSettings</PackageId>
+      Supporting:
+      * .NET Framework 2.0
+      * .NET Framework 3.5
+      * .NET Framework 4.0
+      * .NET Framework 4.5
+      * .NET Standard 2.0
+    </Description>
+    <PackageTags>System;IO;IsolatedStorageSettings;Compat;System.IO.IsolatedStorage.IsolatedStorageSettings</PackageTags>
+    <PackageId>Compat.System.IO.IsolatedStorage.IsolatedStorageSettings</PackageId>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>LonghronShen</Authors>
-    <PackageProjectUrl>https://github.com/LonghronShen/System.IO.IsolatedStorageSettings.Compat</PackageProjectUrl>
-    <Product>Compat.System.IO.IsolatedStorageSettings</Product>
+    <PackageProjectUrl>https://github.com/LonghronShen/System.IO.IsolatedStorage.IsolatedStorageSettings.Compat</PackageProjectUrl>
+    <Product>Compat.System.IO.IsolatedStorage.IsolatedStorageSettings</Product>
     <Copyright>Copyright ©2019 Synyi.com</Copyright>
     <PackageIconUrl>http://go.microsoft.com/fwlink/?LinkID=288859</PackageIconUrl>
-    <RepositoryUrl>https://github.com/LonghronShen/System.IO.IsolatedStorageSettings.Compat</RepositoryUrl>
+    <RepositoryUrl>https://github.com/LonghronShen/System.IO.IsolatedStorage.IsolatedStorageSettings.Compat</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <LangVersion>7.1</LangVersion>
