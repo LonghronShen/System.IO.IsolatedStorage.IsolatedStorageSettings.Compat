@@ -11,4 +11,10 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\System.IO.IsolatedStorage.IsolatedStorageSettings\System.IO.IsolatedStorage.IsolatedStorageSettings.csproj">
+      <Aliases>PortableIsolatedStorageSettings</Aliases>
+    </ProjectReference>
+  </ItemGroup>
+
 </Project>

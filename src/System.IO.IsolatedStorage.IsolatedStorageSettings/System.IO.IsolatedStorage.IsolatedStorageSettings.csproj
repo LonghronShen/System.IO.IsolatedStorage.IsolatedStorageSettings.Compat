@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>net20;net35;net40;net45;netstandard20</TargetFrameworks>
     <RuntimeIdentifiers>win-x86</RuntimeIdentifiers>
-    <VersionPrefix>1.0.2$(CommitHash)</VersionPrefix>
+    <VersionPrefix>1.0.3$(CommitHash)</VersionPrefix>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Description>Compat package for the System.IO.IsolatedStorageSettings.
 
@@ -26,6 +26,7 @@ Supporting:
     <RepositoryUrl>https://github.com/LonghronShen/System.IO.IsolatedStorageSettings.Compat</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <LangVersion>7.1</LangVersion>
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard20' ">
