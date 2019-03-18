@@ -23,7 +23,7 @@ build_script:
 - msbuild System.IO.IsolatedStorage.IsolatedStorageSettings.sln /p:Configuration=%CONFIGURATION% /p:VersionSuffix=%LABEL%
 
 artifacts:
-- path: Release\**\*.nupkg
+- path: **\*.nupkg
 
 cache:
 - '%USERPROFILE%\.nuget\packages'
