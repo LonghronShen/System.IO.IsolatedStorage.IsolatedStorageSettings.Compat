@@ -1,6 +1,6 @@
 # System.IO.IsolatedStorage.IsolatedStorageSettings
 
-[![Build status](https://ci.appveyor.com/api/projects/status/kyyu38ndwnauh4l1?svg=true)](https://ci.appveyor.com/project/LonghronShen/system-io-isolatedstoragesettings-compat)
+[![Build status](https://ci.appveyor.com/api/projects/status/s6lk4fy5tl258ktg?svg=true)](https://ci.appveyor.com/project/LonghronShen/system-io-isolatedstorage-isolatedstoragesettings)
 
 Compat package for the **System.IO.IsolatedStorage.IsolatedStorageSettings**.
 
